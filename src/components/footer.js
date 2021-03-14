@@ -11,7 +11,7 @@ const LinkHome = styled(Link)`
   text-decoration: none;
 `;
 
-const Footer = () => {
+const Footer = ({title}) => {
     const year = new Date().getFullYear();
     return (
         <>
@@ -50,7 +50,7 @@ const Footer = () => {
                     margin:0;
                     padding: 1rem;
                 `}
-            >Hotel DU - Todos los derechos reservados. { year } &copy;</p>
+            >{title} - Todos los derechos reservados. { year } &copy;</p>
         </>
 
     )

@@ -3,8 +3,14 @@ import Header from './header';
 import Footer from './footer';
 import Helmet from 'react-helmet';
 import { Global, css } from '@emotion/core';
+import useSeo from '../hooks/use-seo';
 
 const Layout = (props) => {
+
+  const seo = useSeo();
+  const { siteName, fallbackSeo: { title, description } } = seo;
+  
+
   return (
     <>
       <Global
@@ -44,12 +50,15 @@ const Layout = (props) => {
 
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-        <title>Hotel Du</title>
+        <title>{ title }</title>
+        <meta name="description" content={description} />
       </Helmet>
 
       <Header />
       {props.children}
-      <Footer/>
+      <Footer
+        title={title}
+      />
     </>
   )
 }
